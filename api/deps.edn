@@ -1,6 +1,7 @@
 {:paths ["src" "resources"]
  :deps {org.clojure/clojure {:mvn/version "1.10.1"}
         compojure {:mvn/version "1.6.1"}
+        integrant/repl {:mvn/version "0.3.1"}
         ring/ring-jetty-adapter {:mvn/version "1.8.1"}
         integrant {:mvn/version "0.8.0"}
         ring/ring-defaults {:mvn/version "0.3.2"}
@@ -41,4 +42,6 @@
                 "-i"
                 "-f"
 
-                "rebel-readline.main/-main"]}}}
+                "rebel-readline.main/-main"]}
+  :dev
+  {:extra-paths ["dev"]}}}

@@ -27,11 +27,11 @@
       (wrap-json-response)
       (wrap-defaults api-defaults)))
 
-(def system
-  (ig/init config))
+; (def system
+;   (ig/init config))
 
-(comment (ig/halt! system))
+; (comment (ig/halt! system))
 
-(defn -main
-  [& args]
-  (system))
+; (defn -main
+;   [& args]
+;   (system))
