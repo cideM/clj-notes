@@ -1,4 +1,6 @@
 tags
+tags.lock
+tags.temp
 .envrc
 .cpcache
 .nrepl-port
@@ -6,3 +8,4 @@ tags
 .project
 .settings
 target
+.rebel_readline_history
