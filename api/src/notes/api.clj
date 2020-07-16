@@ -1,9 +1,9 @@
 (ns notes.api
   (:require [ring.adapter.jetty :refer [run-jetty]])
-  (:require [ring.middleware.defaults :refer :all])
+  (:require [ring.middleware.defaults :refer [wrap-defaults api-defaults]])
   (:require [ring.util.response :refer [response]])
   (:require [ring.middleware.json :refer [wrap-json-response]])
-  (:require [compojure.core :refer [defroutes GET]]) 
+  (:require [compojure.core :refer [defroutes GET]])
   (:gen-class))
 
 (defroutes handler
