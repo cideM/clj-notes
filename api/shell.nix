@@ -3,5 +3,6 @@
 pkgs.mkShell {
   buildInputs = [
     pkgs.clojure
+    pkgs.mkcert
   ];
 }
