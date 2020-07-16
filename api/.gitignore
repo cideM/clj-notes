@@ -2,3 +2,7 @@ tags
 .envrc
 .cpcache
 .nrepl-port
+.classpath
+.project
+.settings
+target
