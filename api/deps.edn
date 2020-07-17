@@ -32,16 +32,16 @@
   {:extra-deps {com.bhauman/rebel-readline {:mvn/version "0.1.4"}}
    :main-opts  ["-m" "rebel-readline.main"]}
 
-  :cider-clj 
+  :cider-clj
   {:extra-deps {org.clojure/clojure {:mvn/version "1.10.1"}
                 cider/cider-nrepl {:mvn/version "0.25.2"}}
-   :main-opts ["-m" 
-               "nrepl.cmdline" 
-               "--bind" 
-               "0.0.0.0" 
-               "--port" 
+   :main-opts ["-m"
+               "nrepl.cmdline"
+               "--bind"
+               "0.0.0.0"
+               "--port"
                "41985"
-               "--middleware" 
+               "--middleware"
                "[cider.nrepl/cider-middleware]"]}
 
   ;; rebel readline with nrepl for editor connection to REPL
