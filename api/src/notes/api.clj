@@ -9,6 +9,7 @@
 
 (def config
   {:adapter/jetty {:port (Integer/valueOf (or (System/getenv "port") "3000"))
+                   :host (or (System/getenv "host") "0.0.0.0")
                    :handler (ig/ref :routes/foo)}
    :routes/foo {:base-handler (ig/ref :handler/base)}
    :handler/base {:name "foo"}})

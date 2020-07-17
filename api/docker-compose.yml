@@ -16,6 +16,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    volumes:
+      - ~/.m2:/root/.m2
+      - .:/usr/src/app
+    ports:
+      - "41985:41985"
     environment:
       - VIRTUAL_HOST=api
       - VIRTUAL_PORT=3000

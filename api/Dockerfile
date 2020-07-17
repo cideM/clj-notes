@@ -1,6 +1,11 @@
-FROM clojure:tools-deps
-RUN mkdir -p /usr/src/app
+# TODO: Add layer for deps.edn
+FROM clojure:tools-deps as builder
 WORKDIR /usr/src/app
-COPY . /usr/src/app
+COPY deps.edn /usr/src/app/deps.edn
+# Download dependencies
+RUN clj
+
 EXPOSE 3000
-CMD ["clj", "-m", "notes.api"]
+
+FROM builder
+CMD ["clj", "-A:cider-clj", "-A:dev"]
