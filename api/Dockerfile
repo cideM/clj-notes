@@ -3,7 +3,7 @@ FROM clojure:tools-deps as builder
 WORKDIR /usr/src/app
 COPY deps.edn /usr/src/app/deps.edn
 # Download dependencies
-RUN clj
+RUN clj -e :ok
 
 EXPOSE 3000
 

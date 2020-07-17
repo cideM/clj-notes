@@ -12,13 +12,33 @@ services:
     depends_on:
       - api
 
+  db:
+    image: postgres
+    restart: always
+    # TODO: Create environment variables for things
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_USER: "root"
+      POSTGRES_DB: "notes"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+
   api:
     build:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ~/.m2:/root/.m2
-      - .:/usr/src/app
+      - /usr/src/app/.cppath
+      - ./resources/:/usr/src/app/resources
+      - ./src/:/usr/src/app/src
+      - ./dev/:/usr/src/app/dev
+      - ./test/:/usr/src/app/test
     ports:
       - "41985:41985"
     environment:
