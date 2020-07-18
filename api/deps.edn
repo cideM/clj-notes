@@ -32,33 +32,14 @@
          :main-opts ["-m" "cljfmt-runner.check"]}
   :lint/fix {:main-opts ["-m" "cljfmt-runner.fix"]}
 
-  ;; Clojure REPL with syntax highlighting, built in docs and a quit command `:repl/quit`
-  :rebel
-  {:extra-deps {com.bhauman/rebel-readline {:mvn/version "0.1.4"}}
-   :main-opts  ["-m" "rebel-readline.main"]}
-
   :cider-clj
   {:extra-deps {org.clojure/clojure {:mvn/version "1.10.1"}
-                cider/cider-nrepl {:mvn/version "0.25.2"}}
-   :main-opts ["-m"
-               "nrepl.cmdline"
-               "--bind"
-               "0.0.0.0"
-               "--port"
-               "41985"
-               "--middleware"
-               "[cider.nrepl/cider-middleware]"]}
+                cider/cider-nrepl {:mvn/version "0.25.2"}
+                nrepl {:mvn/version "0.8.0-alpha5"}}
+   :main-opts ["-m" "nrepl.cmdline"
+               "--bind" "0.0.0.0"
+               "--port" "41985"
+               "--middleware" "[cider.nrepl/cider-middleware]"]}
 
-  ;; rebel readline with nrepl for editor connection to REPL
-  :rebel-nrepl
-  {:extra-deps {nrepl                      {:mvn/version "0.8.0-alpha5"}
-                cider/cider-nrepl          {:mvn/version "0.25.2"}
-                com.bhauman/rebel-readline {:mvn/version "0.1.4"}}
-   :main-opts  ["-m" "nrepl.cmdline"
-                "--middleware" "[cider.nrepl/cider-middleware]"
-                "-i"
-                "-f"
-
-                "rebel-readline.main/-main"]}
   :dev
   {:extra-paths ["dev"]}}}
