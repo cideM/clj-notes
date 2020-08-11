@@ -7,7 +7,8 @@
     [next.jdbc :as jdbc]
     [next.jdbc.sql :as sql]
     [integrant.core :as ig]
-    [hikari-cp.core :refer [make-datasource close-datasource]])
+    [hikari-cp.core :refer [make-datasource close-datasource]]
+    [notes.auth :refer [session-authentication-middleware session-authorization-middleware auth-middleware]])
   (:gen-class))
 
 (def config
@@ -55,7 +56,10 @@
   (ring/ring-handler
     (ring/router
       ["/ping" {:get {:handler (fn [_] (response (sql/query db ["select * from notes"])))}
-                :middleware [wrap-json-response]}])))
+                :middleware [wrap-json-response
+                             session-authorization-middleware
+                             session-authentication-middleware
+                             auth-middleware]}])))
 
 (comment
   (response "foo"))
