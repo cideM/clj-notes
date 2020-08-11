@@ -1,6 +1,6 @@
-(ns notes.api-test
+(ns notes.server-test
   (:require [clojure.test :refer :all]
-            [notes.api :refer :all]))
+            [notes.server :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."

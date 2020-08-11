@@ -1,50 +1,15 @@
-# api
+# Notes API - WORK IN PROGRESS
 
-FIXME: my new application.
+## FAQ
 
-## Installation
+### Start the REPL
 
-Download from https://github.com/notes/api.
+`clj -A:cider-clj:dev`
 
-## Usage
+### `Unable to resolve symbol: go in this context`
 
-FIXME: explanation
+I should learn Clojure namespaces properly. I don't have all symbols from all namespaces available, so do a `(ns user)` first and then I should have everything available.
 
-Run the project directly:
+### Make a Request
 
-    $ clojure -m notes.api
-
-Run the project's tests (they'll fail until you edit them):
-
-    $ clojure -A:test:runner
-
-Build an uberjar:
-
-    $ clojure -A:uberjar
-
-Run that uberjar:
-
-    $ java -jar api.jar
-
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
-
-## License
-
-Copyright © 2020 Cloud
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+`curl http://localhost:3000/ping`
