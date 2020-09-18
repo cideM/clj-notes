@@ -1,14 +1,14 @@
 (ns notes.server
   (:require
-    [ring.adapter.jetty :as jetty]
-    [reitit.ring :as ring]
-    [ring.util.response :refer [response]]
-    [ring.middleware.json :refer [wrap-json-response]]
-    [next.jdbc :as jdbc]
-    [next.jdbc.sql :as sql]
-    [integrant.core :as ig]
-    [hikari-cp.core :refer [make-datasource close-datasource]]
-    [notes.auth :refer [session-authentication-middleware session-authorization-middleware auth-middleware]])
+   [ring.adapter.jetty :as jetty]
+   [reitit.ring :as ring]
+   [ring.util.response :refer [response]]
+   [ring.middleware.json :refer [wrap-json-response]]
+   [next.jdbc :as jdbc]
+   [next.jdbc.sql :as sql]
+   [integrant.core :as ig]
+   [hikari-cp.core :refer [make-datasource close-datasource]]
+   [notes.auth :refer [session-authentication-middleware session-authorization-middleware auth-middleware]])
   (:gen-class))
 
 (def config
@@ -41,9 +41,9 @@
   :notes/server
   [_ {:keys [handler] :as opts}]
   (jetty/run-jetty handler
-    (-> opts
-        (dissoc :notes/handler)
-        (assoc :join? false))))
+                   (-> opts
+                       (dissoc :notes/handler)
+                       (assoc :join? false))))
 
 (defmethod ig/halt-key!
   :notes/server
@@ -54,12 +54,12 @@
   :notes/handler
   [_ {:keys [db]}]
   (ring/ring-handler
-    (ring/router
-      ["/ping" {:get {:handler (fn [_] (response (sql/query db ["select * from notes"])))}
-                :middleware [wrap-json-response
-                             session-authorization-middleware
-                             session-authentication-middleware
-                             auth-middleware]}])))
+   (ring/router
+    ["/ping" {:get {:handler (fn [_] (response (sql/query db ["select * from notes"])))}
+              :middleware [wrap-json-response
+                           session-authorization-middleware
+                           session-authentication-middleware
+                           auth-middleware]}])))
 
 (comment
   (response "foo"))
